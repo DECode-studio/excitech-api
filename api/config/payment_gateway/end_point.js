@@ -1,3 +1,8 @@
-export const prodsPg = 'https://my.ipaymu.com'
+const prodsPg = 'https://my.ipaymu.com'
 
-export const devPg = 'https://sandbox.ipaymu.com'
+const devPg = 'https://sandbox.ipaymu.com'
+
+module.exports = {
+    prodsPg,
+    devPg
+}

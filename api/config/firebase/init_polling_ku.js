@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+const { initializeApp } = require("firebase/app");
+const { getFirestore } = require("firebase/firestore");
 
 const firebaseConfig = {
     apiKey: "AIzaSyDWp80YPTxVWCSd0tTrL4TTUjD-b_AOqGs",
@@ -10,7 +10,12 @@ const firebaseConfig = {
     appId: "1:662807726001:web:f21b8ff264cf9b81545f90",
     measurementId: "G-KXS8SQ8THN"
   };
-   
-export const firebase = initializeApp(firebaseConfig, 'polling-ku');
 
-export const database = getFirestore(firebase)
+  const firebase = initializeApp(myFinanceConfig, 'polling-ku');
+  
+  const database = getFirestore(firebase);
+  
+  module.exports = {
+    firebase,
+    database,
+  }

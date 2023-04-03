@@ -1,6 +1,7 @@
 const data = require('../data/data');
 
 const GetAllData = (req, res) => {
+
     var response = {
         status: 200,
         data: data

@@ -1,5 +1,5 @@
-import { initializeApp, fi } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+const { initializeApp } = require("firebase/app");
+const { getFirestore } = require("firebase/firestore");
 
 const myFinanceConfig = {
   apiKey: "AIzaSyBOYk2a0ZuLTCrZ7jlvxlNYzGbDmkjSZ8I",
@@ -11,6 +11,11 @@ const myFinanceConfig = {
   measurementId: "G-TR2VGLTWBW"
 };
 
-export const firebase = initializeApp(myFinanceConfig, 'my-finance');
+const firebase = initializeApp(myFinanceConfig, 'my-finance');
 
-export const database = getFirestore(firebase);
+const database = getFirestore(firebase);
+
+module.exports = {
+  firebase,
+  database,
+}
