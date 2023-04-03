@@ -11,7 +11,7 @@ const firebaseConfig = {
     measurementId: "G-KXS8SQ8THN"
   };
 
-  const firebase = initializeApp(myFinanceConfig, 'polling-ku');
+  const firebase = initializeApp(firebaseConfig, 'polling-ku');
   
   const database = getFirestore(firebase);
   
