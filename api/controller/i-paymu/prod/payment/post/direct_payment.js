@@ -1,14 +1,14 @@
 const axios = require("axios")
 const cryptoJs = require("crypto-js")
 const PostTransaksi = require("./post_transaksi")
-const { devApiKey, devVa } = require("../../../../../config/payment_gateway/pg_config")
-const { devPg } = require("../../../../../config/payment_gateway/end_point")
+const { prodApiKey, prodVa } = require('../../../../../config/payment_gateway/pg_config')
+const { prodsPg } = require('../../../../../config/payment_gateway/end_point')
 
 const DirectPayment = async (req, res) => {
     var data = req.body
-    var apiKey = devApiKey
-    var va = devVa
-    var url = devPg
+    var apiKey = prodApiKey
+    var va = prodVa
+    var url = prodsPg
     var time = Date.now()
 
     var body = {

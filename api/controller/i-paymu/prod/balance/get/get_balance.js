@@ -1,12 +1,12 @@
-const { devApiKey, devVa } = require('../../../../../config/payment_gateway/pg_config');
-const { devPg } = require('../../../../../config/payment_gateway/end_point');
+const { prodApiKey, prodVa } = require('../../../../../config/payment_gateway/pg_config')
+const { prodsPg } = require('../../../../../config/payment_gateway/end_point')
 const axios = require('axios');
 const cryptoJs = require('crypto-js');
 
 const GetBalance = async (data, res) => {
-    var apiKey = devApiKey
-    var va = devVa
-    var url = devPg
+    var apiKey = prodApiKey
+    var va = prodVa
+    var url = prodsPg
     var time = Date.now()
     
     var bodyEncrypt = cryptoJs.SHA256(JSON.stringify(data))
