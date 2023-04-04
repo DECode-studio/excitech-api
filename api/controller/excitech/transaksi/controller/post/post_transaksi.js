@@ -1,0 +1,30 @@
+const { addTransaksi } = require('../../../../../service/excitech/transaksi_controller')
+const { v4 } = require('uuid')
+
+const PostTransaksi = async (req, res) => {
+    var id = v4()
+    var data = req.body
+
+    var transaksi = {
+        id_transaksi: id,
+        id_auth: data.id_auth,
+        prod_transaksi: data.prod_transaksi,
+        title_transaksi: data.title_transaksi,
+        desc_transaksi: data.desc_transaksi,
+        in_transaksi: data.in_transaksi,
+        out_transaksi: data.out_transaksi,
+        status_transaksi: data.status_transaksi,
+    }
+
+    var data = await addTransaksi(transaksi)
+
+    var response = {
+        status: 200,
+        message: 'Transaction Success!',
+        data: data,
+    }
+
+    return res.status(200).json(response);
+}
+
+module.exports = PostTransaksi

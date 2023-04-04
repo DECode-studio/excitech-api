@@ -1,0 +1,34 @@
+server {
+    listen 80;
+    server_name    api.excitech-id.com;
+
+    root           /var/www/api/excitech-api;
+
+    access_log  /var/log/nginx/api.excitech-id.com-access.log;
+    error_log   /var/log/nginx/api.excitech-id.com-error.log;
+
+    add_header X-Frame-Options        "SAMEORIGIN";
+    add_header X-XSS-Protection       "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
+
+    charset         utf-8;
+    gzip_min_length 1000;
+
+    location favicon.ico {
+        access_log off;
+    }
+
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $http_host;
+
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        proxy_pass http://localhost:3003;
+        proxy_redirect off;
+        proxy_read_timeout 240s;
+    }
+}
