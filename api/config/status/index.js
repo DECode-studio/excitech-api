@@ -14,5 +14,5 @@ const status404 = (req, res) => {
 
 module.exports = {
     status404,
-    status405
+    status405,
 }
