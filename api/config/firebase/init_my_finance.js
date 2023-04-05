@@ -18,4 +18,5 @@ const database = getFirestore(firebase);
 module.exports = {
   firebase,
   database,
+  myFinanceConfig,
 }

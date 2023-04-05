@@ -1,7 +1,7 @@
 const { initializeApp } = require("firebase/app");
 const { getFirestore } = require("firebase/firestore");
 
-const firebaseConfig = {
+const pollingKuConfig = {
     apiKey: "AIzaSyDWp80YPTxVWCSd0tTrL4TTUjD-b_AOqGs",
     authDomain: "polling-ku.firebaseapp.com",
     projectId: "polling-ku",
@@ -11,11 +11,12 @@ const firebaseConfig = {
     measurementId: "G-KXS8SQ8THN"
   };
 
-  const firebase = initializeApp(firebaseConfig, 'polling-ku');
+  const firebase = initializeApp(pollingKuConfig, 'polling-ku');
   
   const database = getFirestore(firebase);
   
   module.exports = {
     firebase,
     database,
+    pollingKuConfig,
   }
