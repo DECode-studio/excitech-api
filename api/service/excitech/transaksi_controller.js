@@ -13,6 +13,13 @@ const getTransaksibyId = async (id) => {
             .filter('id_transaksi', 'eq', id)
 }
 
+const getTransaksiRefId = async (id) => {
+    return await supabase
+            .from('tbl_transaksi')
+            .select()
+            .filter('id_auth', 'eq', id)
+}
+
 const updateTransaksi = async ( transaksi, id ) => {
     var id_transaksi = id
     
@@ -38,6 +45,7 @@ const deleteTransaksi = async (id) => {
 module.exports = {
     getTransaksi, 
     getTransaksibyId,
+    getTransaksiRefId,
     updateTransaksi,
     addTransaksi,
     deleteTransaksi,

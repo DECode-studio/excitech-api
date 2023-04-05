@@ -1,15 +1,18 @@
 const GetAllTransaksi = require("./controller/get/get_all_transaksi")
 const GetTransaksi = require("./controller/get/get_transaksi")
+const GetUserTransaksi = require("./controller/get/get_user_transaksi")
 const PostTransaksi = require("./controller/post/post_transaksi")
 const PutTransaksi = require("./controller/put/put_transaksi")
 
 const GetMethod = async (req, res) => {
-    const { id } = req.query;
+    const { id, user } = req.query;
 
-    if (id == null) {
-      return await GetAllTransaksi(req, res)
-    } else {
+    if (id != null) {
       return await GetTransaksi(req, res)
+    } else if (user != null) {
+      return GetUserTransaksi(req, res)
+    } else {
+      return await GetAllTransaksi(req, res)
     }
 }
 
