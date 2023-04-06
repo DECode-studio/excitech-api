@@ -1,5 +1,6 @@
 const { initializeApp } = require("firebase/app");
 const { getFirestore } = require("firebase/firestore");
+// const { getMessaging } = require("firebase/messaging");
 
 const pollingKuConfig = {
     apiKey: "AIzaSyDWp80YPTxVWCSd0tTrL4TTUjD-b_AOqGs",
@@ -14,9 +15,9 @@ const pollingKuConfig = {
   const firebase = initializeApp(pollingKuConfig, 'polling-ku');
   
   const database = getFirestore(firebase);
+  // const messaging = getMessaging(firebase);
   
   module.exports = {
     firebase,
     database,
-    pollingKuConfig,
   }

@@ -1,4 +1,5 @@
 const { getStatusById } = require('../../../../service/polling-ku/status_controller');
+const { getTokenByUser } = require('../../../../service/polling-ku/token_notify_controller');
 const { getUserById } = require('../../../../service/polling-ku/user_controller');
 
 const GetUser = async (req, res) => {
@@ -6,8 +7,9 @@ const GetUser = async (req, res) => {
 
     var user = await getUserById(id)
     var status = await getStatusById(id)
+    var token = await getTokenByUser(id)
 
-    var data = {...user, status: status}
+    var data = {...user, status: status, token:token}
     
     var response = {
         status: 200,

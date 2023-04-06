@@ -4,6 +4,7 @@ const UpdateTransaksi  = require('./service/update_transaksi');
 const ProStatus = require('./post/pro_status');
 const PremiumStatus = require('./post/premium_status');
 const UnlimitedStatus = require('./post/unlimited_status');
+const notification = require('../../../service/notification')
 
 const PostStatus = async (req, res) => {
     const { id, code } = req.query;
@@ -14,6 +15,7 @@ const PostStatus = async (req, res) => {
     } else {
         LogStatus(data)
         UpdateTransaksi(data)
+        notification.SuccesProductNotify(req)
 
         if (code == 'pro') {
             return await ProStatus(req, res)
