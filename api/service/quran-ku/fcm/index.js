@@ -1,7 +1,7 @@
 const fcmQuranKu = require('../../../config/fcm/fcm_quran_ku')
 const { getTokenByUser } = require('../token_notify_controller')
 
-const SuccesTransactionNotify = async (data) => {
+const QuranKuSuccesTransactionNotify = async (data) => {
     var token = await getTokenByUser(data.id)
 
     var message = {
@@ -28,7 +28,7 @@ const SuccesTransactionNotify = async (data) => {
     });
 }
 
-const RequestTransactionNotify = async (data) => {
+const QuranKuRequestTransactionNotify = async (data) => {
     var token = await getTokenByUser(data.id)
 
     var message = {
@@ -56,6 +56,6 @@ const RequestTransactionNotify = async (data) => {
 }
 
 module.exports = {
-    SuccesTransactionNotify,
-    RequestTransactionNotify,
+    QuranKuSuccesTransactionNotify,
+    QuranKuRequestTransactionNotify,
 }

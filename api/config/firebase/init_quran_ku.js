@@ -11,7 +11,7 @@ const quranKuConfig = {
     measurementId: "G-VW9HDGB7NN"
   };
 
-  const firebase = initializeApp(quranKuConfig, 'polling-ku');
+  const firebase = initializeApp(quranKuConfig, 'quran-ku');
   
   const database = getFirestore(firebase);
   

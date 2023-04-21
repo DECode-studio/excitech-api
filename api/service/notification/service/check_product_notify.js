@@ -1,14 +1,20 @@
-const { RequestTransactionNotify } = require("../../polling-ku/fcm")
+const { PollingKuRequestTransactionNotify } = require("../../polling-ku/fcm")
+const { QuranKuRequestTransactionNotify } = require("../../quran-ku/fcm")
 
 const CheckProductNotify = (req) => {
     var data = req.body
     var body = {
         id: data.idUser,
-        product: data.nameProduct
+        product: data.nameProduct,
+        desc: data.descProduct,
     }
 
     if (data.product == 'polling-ku') {
-        RequestTransactionNotify(body)
+        PollingKuRequestTransactionNotify(body)
+    }
+
+    if (data.product == 'quran-ku') {
+        QuranKuRequestTransactionNotify(body)
     }
 }
 

@@ -6,6 +6,7 @@ const PostTransaksi = async (req, pg) => {
     var transaksi = {
         id_transaksi: data.transactionId,
         id_auth: data.idUser,
+        id_reff: data.idReff,
         prod_transaksi: data.product,
         title_transaksi: data.nameProduct,
         desc_transaksi: data.descProduct,
