@@ -12,7 +12,12 @@ const PostMethod = async (req, res) => {
     } else {
         LogStatus(data)
         UpdateTransaksi(data)
-        notification.SuccesProductNotify(req)
+        
+        if (data.status == 'berhasil') {
+            notification.SuccesProductNotify(req)
+        } else {
+            notification.FailedProductNotify(req)
+        }
     }
 }
 
