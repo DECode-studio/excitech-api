@@ -12,7 +12,15 @@ const status404 = (req, res) => {
     })
 }
 
+const status200TransactionFailed = (req, res) => {
+    return res.status(200).json({
+        status: 200,
+        message: "Transaction Failed / Expired",
+    })
+}
+
 module.exports = {
     status404,
     status405,
+    status200TransactionFailed
 }

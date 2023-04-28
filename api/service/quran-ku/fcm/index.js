@@ -67,7 +67,7 @@ const QuranKuFailedTransactionNotify = async (data) => {
         collapse_key: 'transaction_failed',
         
         notification: {
-            title: 'Selesaikan Gagl',
+            title: 'Selesaikan Gagal',
             body: data.product != 'donation'
                 ? `Yah Sayang Sekali...\nTransaksi anda untuk meningkatkan akun anda menjadi ${data.product} telah gagal\nSilahkan ulangi lagi`
                 : `Yah Sayang Sekali...\nTransaksi anda untuk ${data.desc} telah gagal\nSilahkan ulangi lagi`

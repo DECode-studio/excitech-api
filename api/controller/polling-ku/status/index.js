@@ -16,7 +16,7 @@ const PostStatus = async (req, res) => {
         LogStatus(data)
         UpdateTransaksi(data)
 
-        if (data.status) {
+        if (data.status == 'berhasil') {
             notification.SuccesProductNotify(req)
 
             if (code == 'pro') {
@@ -30,6 +30,7 @@ const PostStatus = async (req, res) => {
             }
         } else {
             notification.FailedProductNotify(req)
+            return status200TransactionFailed(req, res)
         }
     }
 }
