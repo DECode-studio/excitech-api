@@ -9,8 +9,10 @@ const QuranKuSuccesTransactionNotify = async (data) => {
         collapse_key: 'transaction_success',
         
         notification: {
-            title: 'Transaksi Telah Berhasil', 
-            body: `Selamat transaksi anda untuk meningkatkan akun anda menjadi ${data.product} telah berhasil` 
+            title: 'Transaksi Telah Berhasil',
+            body: data.product != 'donation'
+                ? `Selamat transaksi anda untuk meningkatkan akun anda menjadi ${data.product} telah berhasil`
+                : `Selamat transaksi anda untuk ${data.desc} telah berhasil`
         },
         
         data: {
@@ -36,8 +38,39 @@ const QuranKuRequestTransactionNotify = async (data) => {
         collapse_key: 'transaction_waiting',
         
         notification: {
-            title: 'Selesaikan Transaksi Anda', 
-            body: `Silahkan selesaikan transaksi anda untuk meningkatkan akun anda menjadi ${data.product}` 
+            title: 'Selesaikan Transaksi Anda',
+            body: data.product != 'donation'
+                ? `Silahkan selesaikan transaksi anda untuk meningkatkan akun anda menjadi ${data.product}`
+                : `Silahkan Silahkan selesaikan transaksi anda untuk ${data.desc}`
+        },
+        
+        data: {
+            channel: 'transaction_channel',
+            route: '/notify',
+        }
+    };
+    
+    fcmQuranKu.send(message, function(err, response){
+        if (err) {
+            console.log("Something has gone wrong!", err);
+        } else {
+            console.log("Successfully sent with response: ", response);
+        }
+    });
+}
+
+const QuranKuFailedTransactionNotify = async (data) => {
+    var token = await getTokenByUser(data.id)
+
+    var message = {
+        registration_ids: token.map((value) => value.idToken), 
+        collapse_key: 'transaction_failed',
+        
+        notification: {
+            title: 'Selesaikan Gagl',
+            body: data.product != 'donation'
+                ? `Yah Sayang Sekali...\nTransaksi anda untuk meningkatkan akun anda menjadi ${data.product} telah gagal\nSilahkan ulangi lagi`
+                : `Yah Sayang Sekali...\nTransaksi anda untuk ${data.desc} telah gagal\nSilahkan ulangi lagi`
         },
         
         data: {
@@ -58,4 +91,5 @@ const QuranKuRequestTransactionNotify = async (data) => {
 module.exports = {
     QuranKuSuccesTransactionNotify,
     QuranKuRequestTransactionNotify,
+    QuranKuFailedTransactionNotify,
 }

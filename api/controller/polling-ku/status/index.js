@@ -15,16 +15,21 @@ const PostStatus = async (req, res) => {
     } else {
         LogStatus(data)
         UpdateTransaksi(data)
-        notification.SuccesProductNotify(req)
 
-        if (code == 'pro') {
-            return await ProStatus(req, res)
-        } else if (code == 'premium') {
-            return await PremiumStatus(req, res)
-        } else if (code == 'unlimited') {
-            return await UnlimitedStatus(req, res)
+        if (data.status) {
+            notification.SuccesProductNotify(req)
+
+            if (code == 'pro') {
+                return await ProStatus(req, res)
+            } else if (code == 'premium') {
+                return await PremiumStatus(req, res)
+            } else if (code == 'unlimited') {
+                return await UnlimitedStatus(req, res)
+            } else {
+                return status405(req, res)
+            }
         } else {
-            return status405(req, res)
+            notification.FailedProductNotify(req)
         }
     }
 }
